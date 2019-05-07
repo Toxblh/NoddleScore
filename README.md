@@ -17,10 +17,10 @@ Score: 579
 
 
 ### Lib version
-1. `npm i noddle`
+1. `npm i noddle-score`
 2. Use
 ```js
-const getNoddleScore = require('noddle')
+const getNoddleScore = require('noddle-score')
 
 getNoddleScore({
   login: creds.login,

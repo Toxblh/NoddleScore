@@ -14,3 +14,19 @@ Score: 579
 4. `yarn` or `npm i`
 5. `node ./index.js`
 6. Your score already front of you
+
+
+### Lib version
+1. `npm i noddle`
+2. Use
+```js
+const getNoddleScore = require('noddle')
+
+getNoddleScore({
+  login: creds.login,
+  pass: creds.pass
+}).then(score => {
+  console.log('Date:', score.updated_date)
+  console.log('Score:', score.score)
+})
+```

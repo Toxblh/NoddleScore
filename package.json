@@ -4,7 +4,11 @@
     "name": "Toxblh"
   },
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Toxblh/NoddleScore.git"
+  },
   "license": "MIT",
   "dependencies": {
     "puppeteer": "^1.15.0"

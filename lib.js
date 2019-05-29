@@ -1,9 +1,13 @@
 const puppeteer = require('puppeteer')
 
 async function getNoddleScore({ login, pass }) {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+    headless: false
+  })
   const page = await browser.newPage()
-  await page.goto('https://www.noddle.co.uk/account/sign-in', { waitUntil: 'networkidle2' })
+  await page.goto('https://www.creditkarma.co.uk/account/sign-in', {
+    waitUntil: 'networkidle2',
+  })
   await page.waitFor(1000)
   await page.evaluate(
     (eLogin, ePass) => {
@@ -12,18 +16,21 @@ async function getNoddleScore({ login, pass }) {
       document.querySelector('input[type=submit]').click()
     },
     login,
-    pass
+    pass,
   )
   await page.waitForNavigation()
 
   const updated_date_element = await page.$('.account-summary-header__updated-date')
-  const updated_date = await page.evaluate(element => element.textContent, updated_date_element)
+  const updated_date = await page.evaluate(
+    element => element.textContent,
+    updated_date_element,
+  )
   const element = await page.$('.credit-score')
   const creditScore = await page.evaluate(element => element.textContent, element)
 
   const output = {
     updated_date: updated_date.slice(9),
-    score: creditScore
+    score: creditScore,
   }
 
   await browser.close()

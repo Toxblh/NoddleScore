@@ -4,7 +4,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dt/noddle-score.svg)](https://www.npmjs.com/package/noddle-score)
 
 # Collect credit score from noddle.co.uk
-A simple way to collect your score from noddle.co.uk
+A simple way to collect your score from noddle.co.uk and new url creditkarma.co.uk
 
 ### Example result of work
 ```

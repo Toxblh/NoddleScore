@@ -1,16 +1,21 @@
-const puppeteer = require('puppeteer')
+const puppeteer = require("puppeteer-extra")
+const pluginStealth = require("puppeteer-extra-plugin-stealth")
+puppeteer.use(pluginStealth())
 
 async function getNoddleScore({ login, pass }) {
-  const browser = await puppeteer.launch({
-    headless: false
-  })
+  const browser = await puppeteer.launch()
   const page = await browser.newPage()
   await page.goto('https://www.creditkarma.co.uk/account/sign-in', {
     waitUntil: 'networkidle2',
   })
+  await page.setViewport({
+    width: 1920,
+    height: 1080
+  })
   await page.waitFor(1000)
   await page.evaluate(
     (eLogin, ePass) => {
+      document.querySelector('.cc-cookie-accept').click()
       document.querySelector('input#Username').value = eLogin
       document.querySelector('input#Password').value = ePass
       document.querySelector('input[type=submit]').click()

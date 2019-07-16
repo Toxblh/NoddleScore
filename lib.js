@@ -33,9 +33,19 @@ async function getNoddleScore({ login, pass }) {
   const element = await page.$('.credit-score')
   const creditScore = await page.evaluate(element => element.textContent, element)
 
+  await page.goto('https://www.creditkarma.co.uk/credit-report', {
+    waitUntil: 'networkidle2',
+  })
+
+  let xpathDate = await page.$x('//*[@id="cr-expires-in-next-days-text"]/strong')
+  let xpathTextContent = await xpathDate[0].getProperty('textContent')
+  let daysToNew = await xpathTextContent.jsonValue();
+
   const output = {
-    updated_date: updated_date.slice(9),
+    updated_date: daysToNew,
+    report_data: updated_date.slice(9),
     score: creditScore,
+
   }
 
   await browser.close()

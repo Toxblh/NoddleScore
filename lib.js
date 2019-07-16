@@ -3,7 +3,7 @@ const pluginStealth = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(pluginStealth())
 
 async function getNoddleScore({ login, pass }) {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({args: ['--no-sandbox']})
   const page = await browser.newPage()
   await page.goto('https://www.creditkarma.co.uk/account/sign-in', {
     waitUntil: 'networkidle2',

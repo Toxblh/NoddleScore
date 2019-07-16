@@ -43,7 +43,7 @@ async function getNoddleScore({ login, pass }) {
 
   const output = {
     updated_date: daysToNew,
-    report_data: updated_date.slice(9),
+    report_date: updated_date.slice(9),
     score: creditScore,
   }
 

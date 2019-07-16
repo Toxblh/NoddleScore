@@ -1,5 +1,5 @@
 type NoddleScoreOutput = {
-  report_data: string
+  report_date: string
   updated_date: string
   score: number
 }

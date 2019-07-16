@@ -1,5 +1,5 @@
-const puppeteer = require("puppeteer-extra")
-const pluginStealth = require("puppeteer-extra-plugin-stealth")
+const puppeteer = require('puppeteer-extra')
+const pluginStealth = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(pluginStealth())
 
 async function getNoddleScore({ login, pass }) {
@@ -10,7 +10,7 @@ async function getNoddleScore({ login, pass }) {
   })
   await page.setViewport({
     width: 1920,
-    height: 1080
+    height: 1080,
   })
   await page.waitFor(1000)
   await page.evaluate(
@@ -39,13 +39,12 @@ async function getNoddleScore({ login, pass }) {
 
   let xpathDate = await page.$x('//*[@id="cr-expires-in-next-days-text"]/strong')
   let xpathTextContent = await xpathDate[0].getProperty('textContent')
-  let daysToNew = await xpathTextContent.jsonValue();
+  let daysToNew = await xpathTextContent.jsonValue()
 
   const output = {
     updated_date: daysToNew,
     report_data: updated_date.slice(9),
     score: creditScore,
-
   }
 
   await browser.close()

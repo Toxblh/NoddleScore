@@ -15,9 +15,8 @@ async function getNoddleScore({ login, pass }) {
   await page.waitFor(1000)
   await page.evaluate(
     (eLogin, ePass) => {
-      document.querySelector('.cc-cookie-accept').click()
-      document.querySelector('input#Username').value = eLogin
-      document.querySelector('input#Password').value = ePass
+      document.querySelector('input[type=text]').value = eLogin
+      document.querySelector('input[type=password]').value = ePass
       document.querySelector('input[type=submit]').click()
     },
     login,

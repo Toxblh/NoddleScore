@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "puppeteer": "^7.1.0",
-    "puppeteer-extra": "^3.1.16",
-    "puppeteer-extra-plugin-stealth": "^2.7.4"
+    "puppeteer-extra": "^3.1.17",
+    "puppeteer-extra-plugin-stealth": "^2.7.5"
   }
 }
